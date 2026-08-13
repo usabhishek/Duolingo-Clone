@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --duo-green: #58CC02;
+  --duo-green-dark: #46A302;
+  --duo-blue: #1CB0F6;
+  --duo-orange: #FF9600;
+  --duo-red: #FF4B4B;
+  --duo-yellow: #FFC800;
+  --duo-purple: #CE82FF;
+  --bg-primary: #F7F7F7;
+  --bg-secondary: #FFFFFF;
+  --surface: #FFFFFF;
+  --text-primary: #1F2937;
+  --text-secondary: #52606D;
+  --border-color: #E5E5E5;
+}
+
+html.dark {
+  --bg-primary: #0f1d2a;
+  --bg-secondary: #172a35;
+  --surface: #1d2d38;
+  --text-primary: #F1F5F9;
+  --text-secondary: #A9B8C5;
+  --border-color: #324956;
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg-primary);
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+img, svg, video {
+  display: block;
+  max-width: 100%;
+}
+
+@layer components {
+  .btn-primary {
+    @apply rounded-2xl bg-[#58CC02] px-6 py-3 font-bold uppercase tracking-wide text-white shadow-[0_4px_0_#46A302] transition hover:bg-[#61E002] active:translate-y-1 active:shadow-none disabled:opacity-50;
+  }
+  .btn-secondary {
+    @apply rounded-2xl border-2 border-[#E5E5E5] bg-white px-6 py-3 font-bold text-[#1CB0F6] shadow-[0_4px_0_#E5E5E5];
+  }
+  .btn-outline {
+    @apply rounded-2xl border-2 border-[var(--border-color)] bg-[var(--bg-primary)] px-6 py-3 font-bold text-[var(--text-primary)] shadow-[0_4px_0_rgba(0,0,0,0.04)];
+  }
+  .card {
+    @apply rounded-2xl border-2 border-[#E5E5E5] bg-white p-4 dark:border-[#37464F] dark:bg-[#1A2C35];
+  }
+  .skill-node {
+    @apply flex h-16 w-16 items-center justify-center rounded-full border-4 border-b-4 font-bold transition;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
