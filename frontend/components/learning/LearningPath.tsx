@@ -20,7 +20,7 @@ export function LearningPath({ units }: { units: Unit[] }) {
           </div>
 
           <div className="relative mx-auto w-full max-w-[420px] overflow-hidden px-2">
-            <div className="absolute bottom-4 left-1/2 top-4 w-1 -translate-x-1/2 rounded-full bg-gradient-to-b from-[#58CC02] via-[#7cd3ff] to-[#dfeaf0] opacity-90" />
+            <div className="absolute bottom-4 left-1/2 top-4 w-1 -translate-x-1/2 rounded-full bg-gradient-to-b from-[#58CC02] via-[#7cd3ff] to-[var(--border-color)] opacity-90" />
             <div className="relative flex flex-col items-center gap-7">
               {unit.skills.map((skill, idx) => (
                 <div key={skill.id} className="w-full flex justify-center">
@@ -47,7 +47,7 @@ function SkillNode({ skill, index }: { skill: Skill; index: number }) {
       transition={{ delay: index * 0.05, type: "spring", stiffness: 260, damping: 20 }}
       className={`relative flex h-20 w-20 items-center justify-center rounded-full border-[5px] border-b-[8px] text-2xl shadow-[0_12px_20px_rgba(0,0,0,0.18)] ${
         isLocked
-          ? "border-[#d9e4ea] bg-[#e9eff4] text-[#95a7b2]"
+          ? "border-[var(--border-color)] bg-[var(--bg-primary)] text-[var(--text-secondary)]"
           : isCompleted
           ? "border-[#84d46b] bg-[#58CC02] text-white"
           : "cursor-pointer border-[#4aa75d] bg-[#58CC02] text-white hover:scale-105"
@@ -72,15 +72,16 @@ function SkillNode({ skill, index }: { skill: Skill; index: number }) {
         )}
       </div>
 
-      <p className="max-w-[140px] text-center text-lg font-black text-white">{skill.title}</p>
+      {/* Fixed: was text-white, invisible on light backgrounds */}
+      <p className="max-w-[140px] text-center text-sm font-black text-[var(--text-primary)]">{skill.title}</p>
 
       <div className="flex gap-1">
         {skill.lessons.map((lesson) => (
           <Link
             key={lesson.id}
             href={lesson.is_locked ? "#" : `/lesson/${lesson.id}`}
-            className={`h-3 w-3 rounded-full border border-[#0e1d26] shadow-sm ${
-              lesson.is_completed ? "bg-[#58CC02]" : lesson.is_locked ? "bg-[#dfeaf0]" : "bg-[#1CB0F6]"
+            className={`h-3 w-3 rounded-full border border-[var(--border-color)] shadow-sm ${
+              lesson.is_completed ? "bg-[#58CC02]" : lesson.is_locked ? "bg-[var(--border-color)]" : "bg-[#1CB0F6]"
             }`}
             title={lesson.title}
             aria-label={lesson.title}

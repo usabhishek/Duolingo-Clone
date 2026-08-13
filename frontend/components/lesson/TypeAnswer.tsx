@@ -10,7 +10,7 @@ export function TypeAnswer({ value, onChange, disabled }: Props) {
   return (
     <input
       type="text"
-      className="w-full rounded-2xl border-2 border-[var(--border-color)] bg-white px-4 py-3 text-lg font-semibold outline-none focus:border-duo-blue dark:bg-[#1A2C35] dark:text-black"
+      className="w-full rounded-2xl border-2 border-[var(--border-color)] bg-[var(--bg-secondary)] px-4 py-3 text-lg font-semibold text-[var(--text-primary)] outline-none placeholder:text-[var(--text-secondary)] focus:border-[#1CB0F6] disabled:opacity-60"
       value={value}
       onChange={(e) => onChange(e.target.value)}
       disabled={disabled}
