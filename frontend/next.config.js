@@ -2,6 +2,8 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 const nextConfig = {
+  // Standalone output creates a minimal self-contained server (much smaller Docker image)
+  output: "standalone",
   images: {
     unoptimized: true,
   },
