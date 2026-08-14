@@ -39,8 +39,10 @@ export const achievementsApi = {
 export const analyticsApi = {
   get: (token: string) => apiFetch<{ total_exercises: number; accuracy: number; strongest_exercise_type: string; weakest_exercise_type: string; weakest_skill: string | null }>("/api/v1/analytics", {}, token),
   learningHealth: (token: string) => apiFetch<{ score: number; category: string; explanation: string }>("/api/v1/analytics/learning-health", {}, token),
-  recommendations: (token: string) => apiFetch<{ recommended_skill?: { id: number; title: string }; reason?: string; weakness_score?: number }>("/api/v1/recommendations", {}, token),
-  mistakes: (token: string) => apiFetch<Array<{ exercise_id: number; prompt: string; user_answer: unknown; correct_answer: unknown; mistake_count: number; exercise_type: string; last_mistake_at: string }>>("/api/v1/mistakes", {}, token),
+  // Fixed: was /api/v1/recommendations → correct path is /api/v1/analytics/recommendations
+  recommendations: (token: string) => apiFetch<{ recommended_skill?: { id: number; title: string }; reason?: string; weakness_score?: number }>("/api/v1/analytics/recommendations", {}, token),
+  // Fixed: was /api/v1/mistakes → correct path is /api/v1/analytics/mistakes
+  mistakes: (token: string) => apiFetch<Array<{ exercise_id: number; prompt: string; user_answer: unknown; correct_answer: unknown; mistake_count: number; exercise_type: string; last_mistake_at: string }>>("/api/v1/analytics/mistakes", {}, token),
 };
 
 export const friendsApi = {
@@ -53,5 +55,6 @@ export const friendsApi = {
 };
 
 export const practiceApi = {
+  // Fixed: POST /api/v1/practice/personalized
   personalized: (token: string) => apiFetch<{ session_id: number; exercises: import("@/types").Exercise[]; max_xp: number }>("/api/v1/practice/personalized", { method: "POST" }, token),
 };

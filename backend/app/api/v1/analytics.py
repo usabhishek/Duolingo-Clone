@@ -16,7 +16,8 @@ from app.services.gamification import award_xp
 router = APIRouter(tags=["analytics"])
 
 
-@router.get("/recommendations")
+@router.get("/analytics/recommendations")
+@router.get("/recommendations")  # legacy alias
 def recommendations(user: CurrentUser, db: DbSession):
     return get_recommendations(db, user.id)
 
@@ -31,7 +32,8 @@ def learning_health(user: CurrentUser, db: DbSession):
     return compute_learning_health(db, user.id)
 
 
-@router.get("/mistakes")
+@router.get("/analytics/mistakes")
+@router.get("/mistakes")  # legacy alias
 def mistakes(user: CurrentUser, db: DbSession):
     records = (
         db.query(MistakeRecord, Exercise)

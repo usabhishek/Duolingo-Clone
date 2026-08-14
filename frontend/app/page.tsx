@@ -47,9 +47,10 @@ export default function HomePage() {
 
   if (!hydrated) {
     return (
-      <div className="flex min-h-screen items-center justify-center px-4">
-        <div className="rounded-full border border-[#213741] bg-[#0f2029] px-5 py-3 text-sm font-black uppercase tracking-[0.2em] text-[#dfeaf0]">
-          Loading...
+      <div className="flex min-h-screen items-center justify-center px-4 bg-[var(--bg-primary)]">
+        <div className="flex flex-col items-center gap-4">
+          <div className="h-12 w-12 animate-spin rounded-full border-4 border-[#58CC02] border-t-transparent" />
+          <p className="text-sm font-black uppercase tracking-widest text-[var(--text-secondary)]">Loading...</p>
         </div>
       </div>
     );
@@ -57,13 +58,13 @@ export default function HomePage() {
 
   if (!token) {
     return (
-      <div className="flex min-h-screen items-center justify-center px-4">
-        <div className="w-full max-w-md rounded-[28px] border border-[#213741] bg-[#0f2029] p-8 text-center shadow-[0_20px_40px_rgba(0,0,0,0.18)]">
+      <div className="flex min-h-screen items-center justify-center px-4 bg-[var(--bg-primary)]">
+        <div className="w-full max-w-md rounded-[28px] border-2 border-[var(--border-color)] bg-[var(--surface)] p-8 text-center shadow-[0_20px_40px_rgba(0,0,0,0.08)]">
           <div className="mb-4 text-5xl">🔐</div>
-          <h1 className="text-2xl font-black text-white">Welcome back</h1>
-          <p className="mt-2 text-sm text-[#a7bac6]">Sign in to continue to LinguaQuest.</p>
-          <Link href="/login" className="mt-6 inline-flex w-full items-center justify-center rounded-2xl border border-[#213741] bg-[#1c3d48] px-6 py-3 font-black uppercase tracking-[0.12em] text-[#9de5ff]">
-            Go to login
+          <h1 className="text-2xl font-black text-[var(--text-primary)]">Welcome back</h1>
+          <p className="mt-2 text-sm text-[var(--text-secondary)]">Sign in to continue to LinguaQuest.</p>
+          <Link href="/login" className="mt-6 inline-flex w-full items-center justify-center rounded-2xl bg-[#58CC02] px-6 py-3 font-black uppercase tracking-[0.12em] text-white shadow-[0_4px_0_#46A302] transition hover:translate-y-px hover:shadow-none">
+            Go to Login
           </Link>
         </div>
       </div>
